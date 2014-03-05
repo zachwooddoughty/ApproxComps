@@ -1,5 +1,9 @@
 import math, random
 
+### Zach Wood-Doughty
+### 2014 March 5
+### Code available on Github.com/zachwooddoughty/ApproxComps
+
 class Graph:
     '''
     A bipartite graph.
@@ -8,6 +12,10 @@ class Graph:
     '''
 
     def __init__(self, n, E):
+        '''
+        Initiate the graph with n nodes on each side
+        and the given set of edges
+        '''
         self.n = n
         self.E = E 
         self.X = [x + 1 for x in range(n)]
@@ -19,6 +27,9 @@ class Graph:
             self.neighbors[y] = self.neighbors.get(y, []) + [x]
 
     def random_edge(self):
+        '''
+        Return a random edge from the graph.
+        '''
         return random.sample(self.E, 1)[0]
 
     def construct_matching(self, k):
@@ -35,6 +46,10 @@ class Graph:
                     if node in edge and edge not in M.E:
                         T.append(edge[1])
 class Matching:
+    '''
+    A matching of size k between k nodes on the left and k nodes on the right
+    '''
+
     def __init__(self, k, E):
         '''
         E is the set of edges in the matching
@@ -45,6 +60,9 @@ class Matching:
         self.update()
 
     def update(self):
+        '''
+        Store neighbor dictionaries for each node
+        '''
         self.X_pair = {x:y for (x,y) in self.E}
         self.Y_pair = {y:x for (x,y) in self.E}
 
@@ -56,6 +74,7 @@ class Matching:
         '''
         Consider transitioning M_k -> M_k-1
         or M_k-1 -> M_k-1 or M_k-1 -> M_k
+        As defined in Sinclair's Algorithms for Random Generation & Counting and other works
         '''
         changed = False
 

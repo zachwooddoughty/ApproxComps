@@ -1,7 +1,16 @@
 import collections
 from graph import *
 
+### Zach Wood-Doughty
+### 2014 March 5
+### Code available on Github.com/zachwooddoughty/ApproxComps
+
 class HopcroftKarp(object):
+    '''
+    Hopcroft-Karp algorithm for finding a matching of size k in a bipartite graph
+    Adapted from Wikipedia and http://stackoverflow.com/questions/4697228/hopcroftkarp-algorithm-in-python
+    '''
+
     INFINITY = -1
 
     def __init__(self, G):
